@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Server-Sent Events client example with EventSource</title>
+</head>
+<body>
+<script>
+    if (window.EventSource == null) {
+        alert('The browser does not support Server-Sent Events');
+    } else {
+        var eventSource = new EventSource('/sse/mvc/words');
+
+        eventSource.onopen = function () {
+            console.log('connection is established');
+        };
+
+        eventSource.onerror = function (error) {
+            console.log('connection state: ' + eventSource.readyState + ', error: ' + event);
+        };
+
+        eventSource.onmessage = function (event) {
+            console.log('id: ' + event.lastEventId + ', data: ' + event.data);
+
+            if (event.data.endsWith('.')) {
+                eventSource.close();
+                console.log('connection is closed');
+            }
+        };
+    }
+</script>
+</body>
+</html>

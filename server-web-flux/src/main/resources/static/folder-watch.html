@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Server-Sent Events client example with EventSource</title>
+</head>
+<body>
+<div class="events"></div>
+<script>
+    if (window.EventSource == null) {
+        alert('The browser does not support Server-Sent Events');
+    } else {
+        var eventSource = new EventSource('/sse/flux/folder-watch');
+
+        function log(message) {
+            document.querySelector('.events').innerHTML += message + '<br>';
+        }
+
+        eventSource.onopen = function () {
+            log('connection is established');
+        };
+
+        eventSource.onerror = function () {
+            log('connection state: ' + eventSource.readyState + ', error: ' + event);
+        };
+
+        eventSource.onmessage = function () {
+            log('message: ' + event.data);
+        };
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+#top-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 50%;
+    bottom: 50%;
+    border: solid #000;
+    border-width: 0 1px 1px 0;
+}
+
+#top-right {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 0;
+    bottom: 50%;
+    border: solid #000;
+    border-width: 0 0 1px 0;
+}
+
+#bottom-left {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 50%;
+    bottom: 0;
+    border: solid #000;
+    border-width: 0 1px 0 0;
+}
+
+#bottom-right {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    border-width: 1px 0 0 1px;
+}
